@@ -1,0 +1,36 @@
+UPLODAD  offer_500.deb in /home
+
+COMMANDS OVER SSH:
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt update
+sudo apt install oracle-java17-installer
+mkdir /tmp/ramdisk
+chmod 777 /tmp/ramdisk
+mount -t tmpfs -o size=1024M tmpfs /tmp/ramdisk
+cd /home
+dpkg -i *.deb
+wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+tar -xf ffmpeg-release-amd64-static.tar.xz
+cd ffmpeg-5.1.1-amd64-static/
+mv ffmpeg /usr/bin/
+mv ffprobe /usr/bin/
+
+WEB INTERFACE:
+http:127.0.0.1:8989/ui
+admin:123
+
+USEFUL COMMANDS:
+systemctl start mpdplayer
+systemctl stop mpdplayer
+systemctl restart mpdplayer
+
+IF YOU WANT ADD AUTO RESTART:
+crontab -e
+Please copy 
+0 5 * * * /opt/mpdplayer/bin/restartService.sh
+
+I's mean every Morning at 5:00am mpdplayer going restart
+Don't take more 50 streams on server
+Enjoy and not sell solution. 
